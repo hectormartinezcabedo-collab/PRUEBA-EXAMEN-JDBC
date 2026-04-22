@@ -276,7 +276,7 @@ public class Medicamento {
 					JOptionPane.showMessageDialog(frame, "El formato debe estar relleno");
 				}else if(textField_FechaCaducidad.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(frame, "La fecha de caducidad debe estar relleno");
-				}else if(!textField_FechaCaducidad.getText().matches("^[A-Z]{3}[2][7-9]$")) {
+				}else if(!textField_FechaCaducidad.getText().matches("^(ENE|FEB|MAR|ABR|MAY|JUN|JUL|AGO|SEP|OCT|NOV|DIC)2[7-9]$")) {
 					JOptionPane.showMessageDialog(frame, "La fecha de caducidad debe tener un formato adecuado (EJ: ENE27, año valido solo entre el 2027 y 2029)");
 				}else {
 					JOptionPane.showMessageDialog(frame, "Medicamento añadido correctamente");
