@@ -171,6 +171,7 @@ public class Medicamento {
 		frame.setBounds(100, 100, 960, 601);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+
 		
 		String url = "jdbc:mysql://127.0.0.1:3307/farmacia";
 		String user = "alumno";
@@ -314,6 +315,19 @@ public class Medicamento {
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Connection con;
+				boolean valido=false;
+				do {
+				if(textField_Nombre.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(frame, "El nombre debe estar relleno");
+				}else if(comboBox_Formato.getSelectedIndex()==0) {
+					JOptionPane.showMessageDialog(frame, "El formato debe estar relleno");
+				}else if(textField_FechaCaducidad.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(frame, "La fecha de caducidad debe estar relleno");
+				}else if(!textField_FechaCaducidad.getText().matches("^(ENE|FEB|MAR|ABR|MAY|JUN|JUL|AGO|SEP|OCT|NOV|DIC)2[7-9]$")) {
+					JOptionPane.showMessageDialog(frame, "La fecha de caducidad debe tener un formato adecuado (EJ: ENE27, año valido solo entre el 2027 y 2029)");
+				}else {
+					JOptionPane.showMessageDialog(frame, "Medicamento añadido correctamente");
+					valido=true;
 				try {
 					con = DriverManager.getConnection(url, user, password);
 					PreparedStatement dele_pstmt = con
@@ -329,6 +343,8 @@ public class Medicamento {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				}
+				}while(valido=false);
 			}
 		});
 		
@@ -336,6 +352,19 @@ public class Medicamento {
 		btnActualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Connection con;
+				boolean valido=false;
+				do {
+				if(textField_Nombre.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(frame, "El nombre debe estar relleno");
+				}else if(comboBox_Formato.getSelectedIndex()==0) {
+					JOptionPane.showMessageDialog(frame, "El formato debe estar relleno");
+				}else if(textField_FechaCaducidad.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(frame, "La fecha de caducidad debe estar relleno");
+				}else if(!textField_FechaCaducidad.getText().matches("^(ENE|FEB|MAR|ABR|MAY|JUN|JUL|AGO|SEP|OCT|NOV|DIC)2[7-9]$")) {
+					JOptionPane.showMessageDialog(frame, "La fecha de caducidad debe tener un formato adecuado (EJ: ENE27, año valido solo entre el 2027 y 2029)");
+				}else {
+					JOptionPane.showMessageDialog(frame, "Medicamento añadido correctamente");
+					valido=true;
 				try {
 					con = DriverManager.getConnection(url, user, password);
 					PreparedStatement upd_pstmt = con.prepareStatement(
@@ -355,6 +384,8 @@ public class Medicamento {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+			}
+		}while(valido=false);
 			}
 		});
 		btnActualizar.setBounds(217, 495, 105, 27);
@@ -384,13 +415,27 @@ public class Medicamento {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				int index = tableMedicamentos.getSelectedRow();
-				TableModel model = tableMedicamentos.getModel();
-				textField_ID.setText(model.getValueAt(index, 0).toString());
-				textField_Nombre.setText(model.getValueAt(index, 1).toString());
-				comboBox_Formato.setSelectedItem(index);
-				textField_FechaCaducidad.setText(model.getValueAt(index, 3).toString());
-				chckbxStock.setSelected(false);
+				
+				int indexMedicamento= tableMedicamentos.getSelectedRow();
+				TableModel modelMedicamento = tableMedicamentos.getModel();
+				// ID NAME AGE CITY
+				textField_ID.setText(modelMedicamento.getValueAt(indexMedicamento, 0).toString());
+				textField_Nombre.setText(modelMedicamento.getValueAt(indexMedicamento, 1).toString());
+				String valor = modelMedicamento.getValueAt(indexMedicamento, 2).toString();
+				switch (valor) {
+				    case "1":
+				        comboBox_Formato.setSelectedItem("1) pastillas");
+				        break;
+				    case "2":
+				        comboBox_Formato.setSelectedItem("2) jarabe");
+				        break;
+				    case "3":
+				        comboBox_Formato.setSelectedItem("3) pomada");
+				        break;
+				}
+				textField_FechaCaducidad.setText(modelMedicamento.getValueAt(indexMedicamento, 3).toString());
+				chckbxStock.setSelected((boolean) modelMedicamento.getValueAt(indexMedicamento, 4));
+				
 				
 				
 				
