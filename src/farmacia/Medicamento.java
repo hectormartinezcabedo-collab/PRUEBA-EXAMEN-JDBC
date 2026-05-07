@@ -207,7 +207,10 @@ public class Medicamento {
 		
 		tableMedicamentos = new JTable(modelMedicamentos);
 		scrollPaneMedicamentos.setViewportView(tableMedicamentos);
-		
+		 
+// 	dwadadwadawdawdawdwadwa
+
+
 		scrollPaneSinStock = new JScrollPane();
 		scrollPaneSinStock.setBounds(629, 37, 319, 239);
 		frame.getContentPane().add(scrollPaneSinStock);
@@ -218,52 +221,11 @@ public class Medicamento {
 		modelMedicamentosSinStock.addColumn("Fecha Caducidad");
 		modelMedicamentosSinStock.addColumn("Stock");
 		
-		try {
-			Connection con = ConnectionSingleton.getConnection();
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM medicamentos WHERE stock = 0");
-			while (rs.next()) {
-				Object[] row = new Object[5];
-				row[0] = rs.getInt("idMedicamento");
-				row[1] = rs.getString("nombre");
-				row[2] = rs.getString("formato");
-				row[3] = rs.getString("fechaCaducidad");
-				row[4] = rs.getBoolean("stock");
-				modelMedicamentosSinStock.addRow(row);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 		
-		tableSinStock = new JTable(modelMedicamentosSinStock);
-		scrollPaneSinStock.setViewportView(tableSinStock);
-		
-		textField_ID = new JTextField();
-		textField_ID.setEditable(false);
-		textField_ID.setBounds(86, 306, 114, 21);
-		frame.getContentPane().add(textField_ID);
-		textField_ID.setColumns(10);
-		
-		textField_Nombre = new JTextField();
-		textField_Nombre.setBounds(86, 339, 114, 21);
-		frame.getContentPane().add(textField_Nombre);
-		textField_Nombre.setColumns(10);
-		
-		textField_FechaCaducidad = new JTextField();
-		textField_FechaCaducidad.setBounds(86, 411, 114, 21);
-		frame.getContentPane().add(textField_FechaCaducidad);
-		textField_FechaCaducidad.setColumns(10);
-		
-		JComboBox comboBox_Formato = new JComboBox();
-		comboBox_Formato.setModel(new DefaultComboBoxModel(new String[] {"", "1) pastillas", "2) jarabe", "3) pomada"}));
-		comboBox_Formato.setBounds(86, 372, 114, 26);
-		frame.getContentPane().add(comboBox_Formato);
-		
-		JCheckBox chckbxStock = new JCheckBox("Stock");
-		chckbxStock.setBounds(86, 440, 57, 25);
-		frame.getContentPane().add(chckbxStock);
-		
-		
+//DWADAWDWADAWDAWDAWDWA DAW EBDEWADAWdwa
+for (int i = modelMedicamentos.getRowCount() - 1; i >= 0; i--) {
+	modelMedicamentos.removeRow(i);
+	
 		
 		btnAadir = new JButton("Añadir");
 		btnAadir.addActionListener(new ActionListener() {
