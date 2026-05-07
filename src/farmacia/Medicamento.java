@@ -223,7 +223,8 @@ public class Medicamento {
 		
 		
 //DWADAWDWADAWDAWDAWDWA DAW EBDEWADAWdwa
-///DWADWADWADAWDAWDAWDAW//FWEFSEFSe
+for (int i = modelMedicamentos.getRowCount() - 1; i >= 0; i--) {
+	modelMedicamentos.removeRow(i);
 	
 		
 		btnAadir = new JButton("Añadir");
