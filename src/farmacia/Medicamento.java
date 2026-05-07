@@ -223,6 +223,7 @@ public class Medicamento {
 		
 		
 //DWADAWDWADAWDAWDAWDWA DAW EBDEWADAWdwa
+///DWADWADWADAWDAWDAWDAW//FWEFSEFSe
 	
 		
 		btnAadir = new JButton("Añadir");
