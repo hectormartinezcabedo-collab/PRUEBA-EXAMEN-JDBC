@@ -207,7 +207,10 @@ public class Medicamento {
 		
 		tableMedicamentos = new JTable(modelMedicamentos);
 		scrollPaneMedicamentos.setViewportView(tableMedicamentos);
-		
+		 
+// 	dwadadwadawdawdawdwadwa
+
+
 		scrollPaneSinStock = new JScrollPane();
 		scrollPaneSinStock.setBounds(629, 37, 319, 239);
 		frame.getContentPane().add(scrollPaneSinStock);
@@ -218,22 +221,6 @@ public class Medicamento {
 		modelMedicamentosSinStock.addColumn("Fecha Caducidad");
 		modelMedicamentosSinStock.addColumn("Stock");
 		
-		try {
-			Connection con = ConnectionSingleton.getConnection();
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM medicamentos WHERE stock = 0");
-			while (rs.next()) {
-				Object[] row = new Object[5];
-				row[0] = rs.getInt("idMedicamento");
-				row[1] = rs.getString("nombre");
-				row[2] = rs.getString("formato");
-				row[3] = rs.getString("fechaCaducidad");
-				row[4] = rs.getBoolean("stock");
-				modelMedicamentosSinStock.addRow(row);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 		
 //DWADAWDWADAWDAWDAWDWA DAW EBDEWADAWdwa
 	
