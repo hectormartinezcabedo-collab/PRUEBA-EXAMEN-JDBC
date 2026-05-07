@@ -235,35 +235,8 @@ public class Medicamento {
 			e.printStackTrace();
 		}
 		
-		tableSinStock = new JTable(modelMedicamentosSinStock);
-		scrollPaneSinStock.setViewportView(tableSinStock);
-		
-		textField_ID = new JTextField();
-		textField_ID.setEditable(false);
-		textField_ID.setBounds(86, 306, 114, 21);
-		frame.getContentPane().add(textField_ID);
-		textField_ID.setColumns(10);
-		
-		textField_Nombre = new JTextField();
-		textField_Nombre.setBounds(86, 339, 114, 21);
-		frame.getContentPane().add(textField_Nombre);
-		textField_Nombre.setColumns(10);
-		
-		textField_FechaCaducidad = new JTextField();
-		textField_FechaCaducidad.setBounds(86, 411, 114, 21);
-		frame.getContentPane().add(textField_FechaCaducidad);
-		textField_FechaCaducidad.setColumns(10);
-		
-		JComboBox comboBox_Formato = new JComboBox();
-		comboBox_Formato.setModel(new DefaultComboBoxModel(new String[] {"", "1) pastillas", "2) jarabe", "3) pomada"}));
-		comboBox_Formato.setBounds(86, 372, 114, 26);
-		frame.getContentPane().add(comboBox_Formato);
-		
-		JCheckBox chckbxStock = new JCheckBox("Stock");
-		chckbxStock.setBounds(86, 440, 57, 25);
-		frame.getContentPane().add(chckbxStock);
-		
-		
+//DWADAWDWADAWDAWDAWDWA DAW EBDEWADAWdwa
+	
 		
 		btnAadir = new JButton("Añadir");
 		btnAadir.addActionListener(new ActionListener() {
